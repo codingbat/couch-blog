@@ -1,0 +1,43 @@
+<!-- Add your site or application content here -->
+<div class="container">
+  <div class="well well-lg">
+    <h1>Blog Platform with CouchDB and AngularJS</h1>
+  </div>
+  <!--<div class="panel panel-primary">-->
+      <!--<div class="panel-heading">-->
+          <!--Blog Post One-->
+          <!--<span class="label label-default">by Nazmul Alam on 13th October 2016</span>-->
+      <!--</div>-->
+      <!--<div class="panel-body">-->
+          <!--Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem deleniti quae,-->
+          <!--neque libero voluptate maiores ullam unde voluptatem assumenda velit dolores impedit quis qui!-->
+          <!--Neque, cupiditate labore nulla? Atque, tenetur.-->
+      <!--</div>-->
+      <!--<div class="panel-footer">-->
+          <!--<span class="label label-primary">Comment</span>-->
+          <!--<span class="label label-success">Edit</span>-->
+          <!--<span class="label label-danger">Delete</span>-->
+      <!--</div>-->
+  <!--</div>-->
+
+    <div class="row">
+        <div class="col-sm-6 col-md-6" ng-repeat="post in vm.posts | limitTo:4">
+            <div class="thumbnail">
+                <img src="{{post.doc.image_uri}}" alt="test">
+                <div class="caption">
+                    <h3>{{post.doc.title}}</h3>
+                    <p>
+                        {{post.doc.excerpt}}
+                    </p>
+                    <div>
+                        <span class="label label-primary">Comment</span>
+                        <span class="label label-success">Edit</span>
+                        <a href ng-click="vm.deleteBlogPost($index, post.doc._id, post.doc._rev)">
+                            <span class="label label-danger">Delete</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
