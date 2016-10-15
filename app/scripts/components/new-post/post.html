@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <strong>Create a new blog post</strong>
+        </div>
+        <div class="panel-body">
+          <div class="col-xs-6">
+            <div class="form-group-lg">
+              <label for="author">Author: </label>
+              <input type="text" class="form-control" id="author" ng-model="vm.author">
+            </div>
+            <div class="form-group-lg">
+              <label for="title">Title: </label>
+              <input type="text" class="form-control" id="title" ng-model="vm.title">
+            </div>
+            <div class="form-group-lg">
+              <label for="content">Content: </label>
+              <textarea class="form-control" rows="10" id="content" ng-model="vm.content"></textarea>
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <div class="form-group-lg">
+              <label for="url">Image URL: </label>
+              <input type="text" class="form-control" id="url" ng-model="vm.image_uri">
+            </div>
+
+            <div class="form-group">
+              <strong>Categories: </strong>
+              <ul class="list-group">
+                <li class="list-group-item" ng-repeat="category in vm.categoryList">
+                  <input type="checkbox" ng-model="category.selected" value={{category.name}}> {{category.name}}
+                </li>
+              </ul>
+            </div>
+
+            <div class="form-group">
+              <strong>Tags: </strong>
+              <ul class="list-group">
+                <li class="list-group-item" ng-repeat="tag in vm.tagsList">
+                  <input type="checkbox" ng-model="tag.selected" value={{tag.name}}> {{tag.name}}
+                </li>
+              </ul>
+            </div>
+
+            <div class="form-group">
+              <button type="submit" class="btn btn-success btn-block" ng-click="vm.addNewBlogPost()">
+                <strong>Submit</strong>
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
