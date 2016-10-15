@@ -13,6 +13,8 @@
       'couchBlogApp.home',
       'couchBlogApp.navbar',
       'couchBlogApp.post',
+      'couchBlogApp.comment',
+      'couchBlogApp.mapReduce'
 
     ])
     .config(['$httpProvider', function ($httpProvider) {

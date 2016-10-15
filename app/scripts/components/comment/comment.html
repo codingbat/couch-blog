@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <strong>{{vm.doc.title}}</strong>
+      <span class="label label-default">by {{vm.doc.author}} on {{vm.doc.created_on | date}}</span>
+    </div>
+    <div class="panel-body">
+      {{vm.doc.content}}
+
+      <div class="panel panel-default" ng-repeat="cmnt in vm.doc.comments | limitTo:5">
+        <div class="panel-heading">
+          {{cmnt.author}}
+        </div>
+        <div class="panel-body">
+          {{cmnt.comment}}
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <div class="panel-body">
+        <div class="col-xs-6">
+          <div class="form-group-sm">
+            <label for="author">Author: </label>
+            <input type="text" class="form-control" id="author" ng-model="vm.author">
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <div class="form-group-sm">
+            <label for="comment">Comment: </label>
+            <textarea class="form-control" rows="10" id="comment" ng-model="vm.comment"></textarea>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary" ng-click="vm.addNewComment()">
+              <strong>Submit</strong>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

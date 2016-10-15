@@ -10,9 +10,19 @@
           useAsDefault: true,
         },
         {
-          path: '/add-new-post',
+          path: '/create',
           name: 'Post',
           component: 'addNewPost',
+        },
+        {
+          path: '/comment',
+          name: 'Comment',
+          component: 'addNewComment',
+        },
+        {
+          path: '/mapreduce',
+          name: 'MapReduce',
+          component: 'reducedAuthors',
         },
       ],
     });
