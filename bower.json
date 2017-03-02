@@ -1,6 +1,8 @@
 {
   "name": "couch-blog",
+  "description": "Blog platform with CouchDB and AngularJS.",
   "version": "2.0.0",
+  "private": true,
   "dependencies": {
     "angular": "^1.4.0",
     "bootstrap": "^3.2.0",

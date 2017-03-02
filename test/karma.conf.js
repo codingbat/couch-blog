@@ -47,7 +47,7 @@ module.exports = function (config) {
 
                // changes type to `cobertura`
                coverageReporter: {
-                 type: 'cobertura',
+                 type: 'html',
                  dir: 'reports/coverage-reports/',
                },
 

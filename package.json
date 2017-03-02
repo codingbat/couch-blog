@@ -1,5 +1,7 @@
 {
   "name": "couch-blog",
+  "description": "Blog platform with CouchDB and AngularJS.",
+  "version": "2.0.0",
   "private": true,
   "devDependencies": {
     "autoprefixer-core": "^5.2.1",
