@@ -1,3 +1,3 @@
-FROM nginx:1.10.1-alpine
+FROM nginx:latest
 
 ADD dist/ /usr/share/nginx/html
