@@ -6,7 +6,7 @@
     BlogService.$inject = ['$resource'];
 
     function BlogService($resource) {
-        var BLOG_SERVICE_API = 'http://localhost:5984/couch-blog/:id';
+        var BLOG_SERVICE_API = 'http://34.251.121.181:5984/couch-blog/:id';
 
         return $resource(BLOG_SERVICE_API, {}, {
             query: {method: 'GET', isArray: true},

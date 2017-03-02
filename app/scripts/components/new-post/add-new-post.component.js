@@ -8,10 +8,11 @@
     });
 
   AddNewPostController.$inject = [
-    'BlogService'
+    'BlogService',
+    '$rootRouter'
   ];
 
-  function AddNewPostController(BlogService) {
+  function AddNewPostController(BlogService, $rootRouter) {
     var _this = this;
     _this.addNewBlogPost = addNewBlogPost;
     _this.author = '';
@@ -32,6 +33,10 @@
       {
         id: 3,
         name: 'Hacking'
+      },
+      {
+        id: 4,
+        name: 'General'
       }];
 
     _this.tagsList = [{
@@ -45,6 +50,10 @@
       {
         id: 3,
         name: 'networking'
+      },
+      {
+        id: 4,
+        name: 'random'
       }];
 
     function getCategories() {
@@ -75,6 +84,7 @@
 
       BlogService.save({}, post, function () {
         console.log('new post created');
+        $rootRouter.navigateByUrl('/');
       });
     }
   }

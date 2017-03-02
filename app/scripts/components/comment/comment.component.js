@@ -4,7 +4,7 @@
     .component('addNewComment', {
       controller: AddNewCommentComponent,
       controllerAs: 'vm',
-      templateUrl: 'scripts/components/comment/comment.html'
+      templateUrl: 'app/scripts/components/comment/comment.html'
     });
 
 

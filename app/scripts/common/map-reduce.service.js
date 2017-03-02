@@ -5,7 +5,7 @@
   ReducerService.$inject = ['$resource'];
 
   function ReducerService($resource) {
-    var REDUCER_SERVICE_API = 'http://127.0.0.1:5984/couch-blog/_design/authors/_view/total_blog_posts';
+    var REDUCER_SERVICE_API = 'http://34.251.121.181:5984/couch-blog/_design/authors/_view/total_blog_posts';
 
     return $resource(REDUCER_SERVICE_API, {}, {
       get: {
