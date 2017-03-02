@@ -27,6 +27,13 @@ node {
     stage('Test') {
       sh 'grunt test'
     }
+
+    stage('Deploy') {
+      input message: 'Do you want to deploy to heroku?',
+        ok: 'PRESS OK TO CONTINUE',
+        submitter: 'admin'
+    }
+
   } catch (e) {
     // If there was an exception thrown, the build failed
     currentBuild.result = "FAILED"
@@ -73,8 +80,9 @@ def notifyBuild(String buildStatus = 'STARTED') {
     body: details,
     //   recipientProviders: [[$class: 'DevelopersRecipientProvider']],
     attachLog: true,
+    mimeType: 'text/html',
     replyTo: 'norelpy@devopsittralee.ie',
-    to: 'nazmul.alam@students.ittralee.ie'
+    to: 'devopsittralee@gmail.com'
   )
 }
 
