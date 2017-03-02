@@ -26,14 +26,18 @@ node {
 
     stage('Test') {
       sh 'grunt test'
+      junit allowEmptyResults: false, testResults: 'reports/test-reports/*.xml'
     }
 
     stage('Deploy') {
-      input message: 'Do you want to deploy to heroku?',
+      input message: 'Do you want to deploy to docker?',
         ok: 'PRESS OK TO CONTINUE',
         submitter: 'admin'
-    }
 
+      //   sh 'docker-compose up -d --build'
+      archiveArtifacts allowEmptyArchive: true, artifacts: 'dist/**', fingerprint: true, onlyIfSuccessful: true
+
+    }
   } catch (e) {
     // If there was an exception thrown, the build failed
     currentBuild.result = "FAILED"
