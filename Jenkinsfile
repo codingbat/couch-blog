@@ -1,5 +1,7 @@
 node {
   def nodeHome
+  def dockerHome
+
   try {
     notifyBuild('STARTED')
 
@@ -10,7 +12,12 @@ node {
         'https://github.com/naz-mul/couch-blog.git')
 
       nodeHome = tool 'nodejs610'
+      dockerHome = tool 'docker'
+      env.PATH = "${env.PATH}:${dockerHome}/bin"
       env.PATH = "${env.PATH}:${nodeHome}/bin"
+
+      sh 'docker version'
+      sh 'node --version && npm --version'
 
       sh 'npm install --global bower'
       sh 'npm install --global grunt-cli'
