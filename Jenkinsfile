@@ -34,7 +34,19 @@ node {
         ok: 'PRESS OK TO CONTINUE',
         submitter: 'admin'
 
-      //   sh 'docker-compose up -d --build'
+      // docker build
+      withDockerServer([uri: "unix:///var/run/docker.sock"]) {
+        withDockerRegistry([
+          credentialsId: '3dbe185d-11aa-419a-ae0b-f85b8a5b5435',
+          url: "https://index.docker.io/v1/"]) {
+
+          sh 'docker build -t nalam/couch-blog .'
+          sh 'docker push nalam/couch-blog'
+          // docker run -p 3000:80 -d nalam/couch-blog
+        }
+      }
+
+      // save to archive
       archiveArtifacts allowEmptyArchive: true, artifacts: 'dist/**', fingerprint: true, onlyIfSuccessful: true
 
     }
@@ -99,17 +111,7 @@ def gitClean() {
   timeout(time: 60, unit: 'SECONDS') {
     if (fileExists('.git')) {
       echo 'Found Git repository: using Git to clean the tree.'
-      // The sequence of reset --hard and clean -fdx first
-      // in the root and then using submodule foreach
-      // is based on how the Jenkins Git SCM clean before checkout
-      // feature works.
       sh 'git reset --hard'
-      // Note: -e is necessary to exclude the temp directory
-      // .jenkins-XXXXX in the workspace where Pipeline puts the
-      // batch file for the 'bat' command.
-      //sh 'git clean -fd -e "src/vendor/"'
-      //sh 'git submodule foreach --recursive git reset --hard'
-      //sh 'git submodule foreach --recursive git clean -ffdx'
     } else {
       echo 'No Git repository found: using deleteDir() to wipe clean'
       deleteDir()
